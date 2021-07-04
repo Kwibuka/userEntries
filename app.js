@@ -5,44 +5,21 @@ console.log(buttonSelected);
 
 const fetchAllDataHandler = (id, AllUserElementsInfo) => {
   console.log(id);
-  fetch("https://jsonplaceholder.typicode.com/users")
+  fetch("https://jsonplaceholder.typicode.com/posts")
     .then((respnonse) => {
       return respnonse.json();
     })
-    .then((data, allUserDetails) => {
+    .then((data) => {
       const filteredUser = data.filter((user) => user.id === id);
       console.log(filteredUser);
       const elementFullDetails = document.createElement("div");
-      filteredUser.map((userDetails) => {
-        return (elementFullDetails.innerHTML = ` <ul>
-        <p class="header-items" >More Details</p>
-            <li ><strong>Username:</strong> ${userDetails.username}</li>
-            <li><strong>Email:</strong> ${userDetails.email}</li>
-            <li><strong>phone:</strong> ${userDetails.phone}</li>
-            <li><strong>phone:</strong> ${userDetails.website}</li>
-            <li>
-              <div class="subtitles">
-              <p> Address</p>
-              <div> <strong> Sreeet: </strong> ${userDetails.address.street}</div>
-              <div><strong>Route:</strong> ${userDetails.address.suite}</div>
-              <div><strong>City:</strong> ${userDetails.address.city}</div>
-              <div><strong>Zipcode:</strong> ${userDetails.address.zipcode}</div>
-              </div>
-              <div class="subtitles">
-              <p>Position</p>
-              <div><strong>Latitude</strong>: ${userDetails.address.geo.lat}</div>
-              <div><strong>Longitude</strong>: ${userDetails.address.geo.lng}</div>
-              </div>
-              <div class="subtitles" >
-              
-              <p>Company</p>
-              <div><strong>Name:</strong> ${userDetails.company.name}</div>
-              <div><strong>Phrase:</strong> ${userDetails.company.catchPhrase}</div>
-              <div><strong>bs:</strong> ${userDetails.company.bs}</div>
-              
-              </div>
-            </li>
-          </ul>`);
+      filteredUser.map((post) => {
+        return (elementFullDetails.innerHTML = `
+        <div class="new-post"> 
+        <div class="news-title" >${post.title}</div>
+        <div class="news-body">${post.body}</div>
+        </div>
+        `);
       });
       AllUserElementsInfo.append(elementFullDetails);
     });
