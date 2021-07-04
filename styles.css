@@ -75,3 +75,14 @@ li {
   color: white;
   padding: 1rem;
 }
+
+.new-post {
+  padding: 1rem;
+}
+.news-title {
+  font-weight: bold;
+  padding-bottom: 0.6rem;
+}
+.new-body {
+  text-align: justify;
+}
